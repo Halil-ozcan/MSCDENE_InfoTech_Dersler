@@ -34,7 +34,34 @@ class Program
 
     static string EvaluateGuess(int guess, int targetNumber)
     {
-        
+        if(guess>targetNumber)
+        {
+            return "Lütfen daha küçük bir sayi giriniz";
+        }
+        if(guess<targetNumber)
+        {
+            return "Lütfen daha büyük bir sayi giriniz";
+        }
+        return string.Empty;// "" anlamına geliyor.
+    }
+
+    static int CalculateScore(int remainingLives)
+    {
+        int score = remainingLives==0 ? 0 : remainingLives * 20;
+        return score;
+    }
+
+    static void ShowGameResult(bool isWinner, int targetNumber, int score)
+    {
+        if(isWinner)
+        {
+            printColored("Tebrikler Kazandınız!", ConsoleColor.Green);
+        }
+        else
+        {
+            printColored($"Üzgünüm Kaybettiniz! Doğru Cevap: {targetNumber} olmalıydı.", ConsoleColor.Red);
+        }
+        printColored($"Puanınız: {score}", ConsoleColor.DarkCyan);
     }
 
     static void StartGame()
@@ -42,7 +69,7 @@ class Program
         Console.Clear();
         Random rnd = new Random();
         int targetNumber = rnd.Next(1,101);//1-100
-        Console.WriteLine($"Hile: {targetNumber}", ConsoleColor.Gray);
+        // Console.WriteLine($"Hile: {targetNumber}", ConsoleColor.Gray);
         int guess; // tahmin
         int lives=5; // kullanıcı hakkı
         int score=100; // puan
@@ -53,14 +80,24 @@ class Program
         {
            
             guess = GetValidGuess(lives); // Kullanıcının tahminini aldık.
-            lives--; // yanlış yada doğru bir girdi girmesi halinde hakkını bir azalttık.
+            // yanlış yada doğru bir girdi girmesi halinde hakkını bir azalttık.
             if(lives>0)
             {
                 // Girilen tahmin ile tutulan sayıyı karşılaştıracak metodumuzu yazmaya gidiyoruz.
                 message=EvaluateGuess(guess, targetNumber);
+                if(!string.IsNullOrEmpty(message))// mesajın içi boş değilse
+                {
+                    lives--; 
+                    if(lives!=0)printColored(message, ConsoleColor.Blue,false);
+                    printColored($"Kalan Can: {lives}", ConsoleColor.Yellow);
+                }
             }
 
-        } while (true);
+        } while (guess!=targetNumber && lives>0);
+        // Bu noktada oyun bitmiş diyebiliriz.
+        bool isWinner = guess==targetNumber;
+        score = CalculateScore(lives);
+        ShowGameResult(isWinner, targetNumber,score);
     }
     static void Main(string[] args)
     {
@@ -68,7 +105,7 @@ class Program
        bool isPlayAgain;
        do
        {
-           StartGame(); 
+            StartGame(); 
             Console.WriteLine();
             printColored("YENİDEN OYNAMAK İSTER MİSİNİZ?(E/H): ", ConsoleColor.DarkBlue, false);
             string response = Console.ReadLine()!.ToUpper();
@@ -84,3 +121,5 @@ class Program
 
 
 }
+
+// Alt+0 ile metotları tek satır haline getirir.
