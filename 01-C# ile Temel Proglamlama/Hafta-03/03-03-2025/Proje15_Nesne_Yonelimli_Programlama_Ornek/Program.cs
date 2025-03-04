@@ -1,5 +1,15 @@
 ﻿namespace Proje15_Nesne_Yonelimli_Programlama_Ornek;
+/*
+    1-class(Sınıf): Bir nesnenin şablonudur. class'ın içerisinde yer alan yapılara member denir. Özellikler(Properties/Fields) ve Davranışlar(Method) en önemli memberlardır.
+    2-Object(nesne): Bir sınıfın somut örneğidir.
+    3-Properties/Fields(Özellikler/Alanlar): Bunlar da sınıfın durumlarını tamamlayan değişkenlerdir.
+    4-Methods(Davranışlar): Bu sınıftan yaratılan örneğin(nesnenin) yapabilceği işleri tanımlayan fonksiyonlardır.
 
+    OOP Faydaları:
+    * Tekrar Kullanabilirlik.
+    * Organizasyon
+    * Soyutlama
+*/
 class Program
 {
     static void Main(string[] args)
