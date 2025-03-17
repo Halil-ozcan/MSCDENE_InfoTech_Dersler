@@ -1,0 +1,1 @@
+Select * from Products p join Categories c on p.CategoryId =c.Id;
