@@ -119,21 +119,28 @@
 
 --10) Hangi Bölgede hangi üründen kaç paralýk satýþ yapmýþýz.
 
-Select 
-	r.RegionDescription as 'Bölge',
-	p.ProductName as 'Ürün',
-	Sum(od.Quantity * od.UnitPrice) as 'Tutar'
-from Territories t 
-	join Region r on t.RegionID = r.RegionID
-		join EmployeeTerritories et on t.TerritoryID = et.TerritoryID
-			Join Employees e on e.EmployeeID = et.EmployeeID
-				Join Orders o on o.EmployeeID = e.EmployeeID
-					Join OrderDetails od on o.OrderID = od.OrderID
-						Join Products p on p.ProductID = od.ProductID
-group by r.RegionDescription, p.ProductName
-order by r.RegionDescription, p.ProductName
+--Select 
+--	r.RegionDescription as 'Bölge',
+--	p.ProductName as 'Ürün',
+--	Sum(od.Quantity * od.UnitPrice) as 'Tutar'
+--from Territories t 
+--	join Region r on t.RegionID = r.RegionID
+--		join EmployeeTerritories et on t.TerritoryID = et.TerritoryID
+--			Join Employees e on e.EmployeeID = et.EmployeeID
+--				Join Orders o on o.EmployeeID = e.EmployeeID
+--					Join OrderDetails od on o.OrderID = od.OrderID
+--						Join Products p on p.ProductID = od.ProductID
+--group by r.RegionDescription, p.ProductName
+--order by r.RegionDescription, p.ProductName
 
-
+--11) Ürünlere göre ciro(100.000 den yüksek cirolar) ve Unit Price 80 den büyük olacak?
+select 
+	p.ProductName,
+	sum(od.UnitPrice * od.Quantity) as 'Ciro'
+from products p join OrderDetails od on p.ProductID = od.ProductID
+where p.UnitPrice>80
+group by p.ProductName
+having sum(od.UnitPrice * od.Quantity)>=70000
 
 
 
