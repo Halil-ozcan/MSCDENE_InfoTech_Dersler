@@ -59,5 +59,10 @@ namespace NorthWindManagementApp.DataAccessLayer
             DataAccess.DisconnectDb();
             return product;
         }
+
+        public void Update(UpdateProductModel updateProductModel)
+        {
+
+        }
     }
 }

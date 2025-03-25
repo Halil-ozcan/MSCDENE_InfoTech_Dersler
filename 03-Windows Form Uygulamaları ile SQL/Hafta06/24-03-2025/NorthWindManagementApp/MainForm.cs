@@ -58,14 +58,45 @@ namespace NorthWindManagementApp
         private void dgwProducts_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             // Product Id' ye göre veri tabanýndan products tablosundan ilgili veriyi çek.
-            txtProductName.Text = dgwProducts.CurrentRow.Cells["Name"].Value.ToString();
-            txtProductPrice.Text = dgwProducts.CurrentRow.Cells["Price"].Value.ToString();
-            txtStock.Text = dgwProducts.CurrentRow.Cells["Stock"].Value.ToString();
-            cmbCategoryName.SelectedValue = dgwProducts.CurrentRow.Cells["CategoryId"].Value;
+            //txtProductName.Text = dgwProducts.CurrentRow.Cells["Name"].Value.ToString();
+            //txtProductPrice.Text = dgwProducts.CurrentRow.Cells["Price"].Value.ToString();
+            //txtStock.Text = dgwProducts.CurrentRow.Cells["Stock"].Value.ToString();
+            //cmbCategoryName.SelectedValue = dgwProducts.CurrentRow.Cells["CategoryId"].Value;
 
             ProductDAL productDAL = new ProductDAL();
             Product product = productDAL.GetById((int)dgwProducts.CurrentRow.Cells["Id"].Value);
+            txtProductName.Text = product.Name;
+            txtProductPrice.Text = product.Price.ToString();
+            txtStock.Text = product.Stock.ToString();
+            cmbCategoryName.SelectedValue = product.CategoryId;
 
+
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtProductName.Text.Trim()))
+            {
+                MessageBox.Show("Ürün Adý Boþ Býrakýlamaz");
+                return;
+            }
+            if(string.IsNullOrEmpty(txtProductPrice.Text.Trim()))
+            {
+                MessageBox.Show("Fiyat Boþ Býrakýlamaz");
+            }
+            decimal price;
+            if (!decimal.TryParse(txtProductPrice.Text, out price))
+            {
+                MessageBox.Show("Lütfen Geçerli bir fiyat deðeri giriniz!");
+                return;
+            }
+            int stock;
+            if(!int.TryParse(txtStock.Text, out stock))
+            {
+                MessageBox.Show("Lütfen Geçerli bir stok deðeri giriniz");
+                return;
+            }
+            // Þimdi ProductDAL sýnýfýmýzda bir ürün güncelleme metot yazacaðýz.
 
         }
     }
