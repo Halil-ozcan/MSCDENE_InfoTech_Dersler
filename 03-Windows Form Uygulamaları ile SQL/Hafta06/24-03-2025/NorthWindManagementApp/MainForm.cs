@@ -97,6 +97,18 @@ namespace NorthWindManagementApp
                 return;
             }
             // Þimdi ProductDAL sýnýfýmýzda bir ürün güncelleme metot yazacaðýz.
+            UpdateProductModel updateProductModel = new()
+            {
+                Id = (int)dgwProducts.CurrentRow.Cells["Id"].Value,
+                Name = txtProductName.Text,
+                Price = price,
+                Stock = stock.ToString(),
+                CategoryId=(int)cmbCategoryName.SelectedValue!,
+            };
+            ProductDAL productDAL = new ProductDAL();
+            productDAL.Update(updateProductModel);
+            DataTable products = productDAL.GetAll(); // Bu iki satýr kod güncelleme yapýldýktan sonra data gridde verileri güncelleyip getirmek için yazdýk.
+            LoadProducts(products);
 
         }
     }

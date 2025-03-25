@@ -62,7 +62,20 @@ namespace NorthWindManagementApp.DataAccessLayer
 
         public void Update(UpdateProductModel updateProductModel)
         {
-
+            string price = updateProductModel.Price.ToString().Replace(",", ".");
+            string query = $@"
+                update Products 
+                set
+	                ProductName ='{updateProductModel.Name}',
+	                CategoryID={updateProductModel.CategoryId},
+	                UnitPrice ={price},
+	                UnitsInStock={updateProductModel.Stock}
+                where ProductID = {updateProductModel.Id}
+            ";
+            DataAccess.ConnectDb();
+            SqlCommand cmd = new SqlCommand(query, DataAccess.Connection);
+            cmd.ExecuteNonQuery();// sadece update edeceği ve geriye bir değer dönrümeyeceği için bu metodu kullanıyoruz.
+            DataAccess.DisconnectDb();
         }
     }
 }
