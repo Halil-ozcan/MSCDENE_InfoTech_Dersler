@@ -1,0 +1,6 @@
+@Project05_WebApi_WithDotnetCLI_02_HostAddress = http://localhost:5272
+
+GET {{Project05_WebApi_WithDotnetCLI_02_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

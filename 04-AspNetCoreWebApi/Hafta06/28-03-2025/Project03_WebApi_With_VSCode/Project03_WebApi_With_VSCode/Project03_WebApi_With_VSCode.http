@@ -1,0 +1,6 @@
+@Project03_WebApi_With_VSCode_HostAddress = http://localhost:5110
+
+GET {{Project03_WebApi_With_VSCode_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
