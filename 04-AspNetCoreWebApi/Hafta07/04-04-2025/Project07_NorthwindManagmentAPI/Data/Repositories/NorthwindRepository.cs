@@ -168,8 +168,84 @@ public class NorthwindRepository
         return categories;
   }
 
+  public Category GetCategoryById(int id)
+  {
+    var query=@"
+        select 
+            c.CategoryID,
+            c.CategoryName,
+            c.Description
+        from Categories c
+        where c.CategoryID = @c1
+    ";
+    var parameters = new SqlParameter[]
+    {
+        new SqlParameter("@c1",id)
+    };
+    var dataTable = DatabaseHelper.ExecuteQuery(query,parameters);
+    if(dataTable.Rows.Count==0) return null!;
+    var rows = dataTable.Rows[0];
+    var category = new Category{
+        CategoryID=(int)rows["CategoryID"],
+        CategoryName= rows["CategoryName"].ToString(),
+        Description = rows["Description"].ToString()
+    };
+    return category; 
+  }
+
+  public Category AddCategory(Category category)
+  {
+    var query = @"
+            insert into Categories(CategoryName,Description)
+            values
+                (@c1,@c2)
+            select scope_identity()
+        ";
+        var parameters = new SqlParameter[]
+        {
+            new SqlParameter("@c0",category.CategoryID),
+            new SqlParameter("@c1",category.CategoryName),
+            new SqlParameter("@c2",category.Description),
+        };
+        var newId = Convert.ToInt32(DatabaseHelper.ExecuteScalar(query,parameters));
+        return GetCategoryById(newId);
+  }
+
+  public bool UpdateCategory(Category category)
+ {
+    var query = $@"
+        update Categories
+        set
+            CategoryName = @p1,
+            Description = @p2
+        where CategoryID = @p0
+    ";
+    var parameters = new SqlParameter[]
+    {
+        new SqlParameter("@p0",category.CategoryID),
+        new SqlParameter("@p1",category.CategoryName),
+        new SqlParameter("@p2",category.Description),
+    };
+    var affectedRows = DatabaseHelper.ExecuteNonQuery(query,parameters);
+    return affectedRows> 0;
+ } 
+
+ public bool DeleteCategory(int id)
+ {
+    var commandText = $@"delete Categories where CategoryID=@c0";
+    var parameters = new SqlParameter[]
+    {
+        new SqlParameter("@c0",id),
+    };
+    var affectedRows = DatabaseHelper.ExecuteNonQuery(commandText,parameters);
+    return affectedRows>0;
+ }  
+
+
 
 }
+
+
 
 
 
