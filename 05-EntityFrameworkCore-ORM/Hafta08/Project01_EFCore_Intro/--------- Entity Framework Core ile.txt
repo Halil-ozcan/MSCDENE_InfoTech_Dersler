@@ -1,0 +1,23 @@
+--------- Entity Framework Core ile Proje Geliştireceksek adımları-----------------------
+1)nuget.org dan entityframeworksqlserver paketini kurduk.
+2)model klasörü oluşturup ihtiyacımız olan modelleri oluşturduk.
+3)data klasörü oluşturup appdbcontext classı oluşturup db contexten miras alıp db operasyonları tanımlicaz
+4)appsetting.jsona  "ConnectionStrings": {
+    "DefaultConnection":"Server=HALIL\\MSCD8SQLSERVER;Database=NoteAppDb;User=sa;Password=Qwe123.,;Trust Server Certificate=true",
+    "RemoteConnection":"Uzak sunucu bilgileri"
+  }, oluşturduk.
+
+5) program.cs de builder.Services.AddDbContext<AppDbContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); yaptık.
+6)AppDb Contexte yapıcı metot oluşturduk.public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
+        {
+            
+        }
+7)dotnet tool install --global dotnet-ef --version 8.0.14 bunu yükledik
+8)dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.0.14 bunu yükledik
+9) dotnet ef migrations add InitialDb
+10)dotnet ef database update
+11)Diyelimki Note model classına bir şey ekledik nasıl güncelliycez veri tabanını?
+12)yeni migrations oluşturcaz. dotnet ef migrations add EditedNote
+13)dotnet ef database update diyerek güncellicez.
+
+
