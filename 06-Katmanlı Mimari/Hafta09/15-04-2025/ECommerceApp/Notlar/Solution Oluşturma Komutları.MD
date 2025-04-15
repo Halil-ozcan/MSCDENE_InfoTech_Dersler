@@ -1,5 +1,6 @@
 mkdir EShopApp
 cd EShopApp
+dotnet new sln
 mkdir Backend
 mkdir Frontend
 cd Backend
@@ -12,7 +13,6 @@ cd ..
 cd Frontend
 dotnet new mvc -o Frontend.MVC --no-https
 cd ..
-dotnet new sln
 dotnet sln add Backend/Backend.API
 dotnet sln add Backend/Backend.Business
 dotnet sln add Backend/Backend.Data
