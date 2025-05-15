@@ -1,0 +1,119 @@
+/* body{
+    margin:0
+} */
+
+
+span{
+    background-color: lightblue;
+    padding: 5px;
+    margin: 20px;
+    width: 200px;
+    display: inline-block;
+     
+
+}
+.inline-block{
+    background-color: lightcoral;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    padding: 10px;
+    border: 10px solid black;
+    text-align: center; /*yatayda hizalama*/
+    box-sizing: border-box;
+
+}
+
+.container{
+    position: relative;
+    margin-top: 100px;
+    width: 300px;
+    height: 200px;
+    border: 1px solid black;
+}
+.absolute-box{
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+.nav{
+    position: fixed;
+    top: 0;
+    background-color: lightslategray;
+    left: 0;
+    right: 0;
+    height: 60px;
+}
+
+.menu{
+    list-style-type: none;
+    display: inline-block;
+}
+.auth-menu{
+    list-style-type: none;
+    display: inline;
+}
+.menu-item{
+    display: inline-block;
+    background-color: lightsalmon;
+    padding: 10px 5px;
+    width: 100px;
+    text-align: center;
+    border-radius: 3px;
+
+}
+.auth-menu-item{
+    display: inline-block;
+    background-color: darkcyan;
+    padding: 3px 7px;
+    width: 80px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.wp-fixed{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+}
+.wp{
+    width: 50px;
+    height: 50px;
+}
+
+
+
+/* margin-top: 40px;
+/*inline elementlerde top ve bottom veremezsin versende bir işe yaramaz*/
+/* margin-right: 100px;   rigth ve left değerleri verebilirsin*/
+
+/* inline elementlere widht ve height değerleri verilmez. */
+
+/* display: inline-block; 
+1) inline dersek sadece block elementlerimiz yan yana gelir fakat inline olduğu için yükseklik ve genişlik değerleri bir işe yaramaz.
+2)inline-block ise hem inline hemde block element özelliklerini bir arada kullan dediği için yükseklik ve genişlik değerleri kullanılır.
+
+*/
+
+/* box-sizing: border-box; 
+1)bunun default'u context-box;
+2)Bir elemana box-sizing:border-box;
+tanımladığınızda padding ve border değerleri width - height değerini değiştirmeyecektir.
+3)Bir elemana box-sizing:content-box;
+tanımladığınızda padding ve border değerleri width - height değerini etkileyecektir.
+*/
+
+/* 
+Bir kapsayıcıda kutu içerisinde hareket ettirmek için absolute kullanmamız gerekiyor fakat kutu içerisinde olmasını istiyorsa kapsayıcıya da position'ı relative vermek gerekiyor.(yani içindeki nesnelerin konumlanması için)
+1)position:absolute;
+özelliği olan bir eleman en yakın pozisyon değeri relative olan elemana göre kendini konumlandırır. Eğer position:relative;
+özelliğine sahip bir ebeveyni yoksa belgeye göre kendini konumlandıracaktır.
+2)CSS'te position reletive özelliği farklı nedenlerden dolayı kullanımı tercih edilir.
+ left,top,bottom,right css özellikleri pozisyonu relative,absloute,sticky ve fixed olan öğelere verilebilir. Bir posizyon tanımlı değil ise öğe position:static;gibi davrancak ve top,left css özellikleri o öğe üzerinde çalışmayacaktır.
+3)position:static;
+css özelliği elemanın sabit olduğunu belirtir. static bir öğe içerisinde position:absolute;
+bir eleman konumlandırılamaz. left,right,bottom,top değerleri alamaz.
+4)position:fixed;özelliğ olan bir öğe left,top değerine göre görüntü alanına göre sabitlenir ve aşağı ve yukarı scroll yapıldığında pozisyonunu korur ve sabit bir şekilde kalmaya devam eder.
+5)position:sticky;özelliği bir öğeyi kullanıcın kaydırma konuma göre ayarlar.
+*/
