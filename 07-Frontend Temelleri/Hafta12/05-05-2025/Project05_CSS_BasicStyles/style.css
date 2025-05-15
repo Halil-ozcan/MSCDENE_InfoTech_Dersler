@@ -1,0 +1,16 @@
+.alert-box{
+    /* background-color: orange; */
+    /* background-color: #ffeecc; */
+    /* background-color: rgb(124, 145, 216); */
+    color: #332901;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* padding: 20px; */
+    /* padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px; */
+    padding: 20px 40px;
+    
+
+}

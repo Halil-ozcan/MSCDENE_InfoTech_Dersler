@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formlar</title>
+  </head>
+  <body>
+    <h2>İletişim Formu</h2>
+    <form action="/contact">
+      <label for="firstName">Adınız:</label>
+      <input type="text" id="firstName" />
+      <br /><br />
+
+      <label for="lastName">Soyadınız</label>
+      <input type="text" id="lastName" />
+      <br /><br />
+
+      <label for="message">Mesajınız:</label>
+      <br />
+      <textarea name="" id="message" rows="8" cols="50"></textarea>
+      <br /><br />
+
+      <label for="">Şehir</label>
+      <br />
+      <select name="" id="">
+        <option value="">İstanbul</option>
+        <option value="">Ankara</option>
+        <option value="">İzmir</option>
+      </select>
+      <br><br>
+
+      <label for="">Cinsiyet:</label>
+      <br>
+      <input type="radio" name="gender" id="female" checked>
+      <label for="female">Kadın</label>
+      <input type="radio" name="gender" id="male">
+      <label for="male">Erkek</label>
+      <input type="radio" name="gender" id="none">
+      <label for="none">Belirtmek İstemiyor</label>
+      <br><br>
+
+      <input type="checkbox" name="" id="">
+       <label for="agree">KVKK bildirimini okudum, kabul ediyorum.</label>
+       <br><br>
+
+       <input type="submit" value="Gönder">
+        <input type="reset" value="Temizle">
+    </form>
+    </form>
+  </body>
+</html>

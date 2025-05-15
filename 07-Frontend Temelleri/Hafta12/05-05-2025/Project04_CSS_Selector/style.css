@@ -1,0 +1,27 @@
+/* Class Selector (Sınıf Seçici) */
+.bgYellow{
+    background-color: yellow;
+}
+.box{
+    border: 1px solid blue;
+    padding: 20px;
+}
+
+/* Id Selector(Kimlik Seçici */
+#mainHeader {
+    font-size: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: darkcyan;
+}
+
+
+/* Bileşik Seçiciler */
+/* Torun Seçici */
+div p {
+    color: purple;
+}
+
+/* Çocuk Seçici */
+div>p {
+    font-size: 30px;
+}
