@@ -1,0 +1,12 @@
+#task-list {
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+}
+
+.completed {
+    color: orangered;
+    text-decoration: line-through;
+}
