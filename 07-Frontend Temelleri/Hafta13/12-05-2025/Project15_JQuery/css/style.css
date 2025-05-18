@@ -1,0 +1,15 @@
+#box{
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    margin-top: 10px;
+}
+
+.emphasis{
+    background-color: yellowgreen;
+
+}
+
+.hide{
+    display: none;
+}

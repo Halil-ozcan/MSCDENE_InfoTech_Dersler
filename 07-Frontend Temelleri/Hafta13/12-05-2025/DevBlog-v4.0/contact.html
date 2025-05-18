@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevBlog - İletişim</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><a href="index.html">DevBlog</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="about.html">Hakkımızda</a></li>
+                    <li><a href="contact.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h1>İletişim</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum accusamus aut officia, eveniet at
+                soluta.
+            </p>
+            <p><strong>E-Posta:</strong> info@devblog.com</p>
+            <hr class="line">
+            <form>
+                <div>
+                    <label for="full-name">Ad Soyad:</label>
+                    <input type="text" name="full-name" id="full-name">
+                    <small class="error-message" id="error-full-name"></small>
+                </div>
+                <div>
+                    <label for="email">E-Posta:</label>
+                    <input type="text" name="email" id="email">
+                    <small class="error-message" id="error-email"></small>
+                </div>
+                <div>
+                    <label for="subject">Konu:</label>
+                    <input type="text" name="subject" id="subject">
+                    <small class="error-message" id="error-subject"></small>
+                </div>
+                <div>
+                    <label for="message">Mesaj:</label>
+                    <textarea rows="10" name="message" id="message"></textarea>
+                    <small class="error-message" id="error-message"></small>
+                </div>
+                <div>
+                    <button type="submit">Gönder</button>
+                </div>
+            </form>
+        </main>
+        <footer>
+            <p>&copy; 2025 Mayıs - DevBlog - MSCD-8 Sınıfı</p>
+        </footer>
+    </div>
+
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

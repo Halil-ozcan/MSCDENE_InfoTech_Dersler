@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevBlog-Hakkımızda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom-style.css">
+</head>
+
+<body>
+    <header>
+        <nav
+            class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-3 border-success py-1 py-lg-4 sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <span class="display-3">DevBlog</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopNav"
+                    aria-controls="navbarTopNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTopNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Ana Sayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">Hakkımızda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="contact.html">İletişim</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <h2 class="mb-4 display-6">İletişim</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, consequatur!</p>
+        <p><span class="fw-bold">EPosta: </span>info@devblog.com</p>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="full-name" class="form-label">Ad Soyad:</label>
+                        <input type="text" class="form-control" id="full-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-Posta:</label>
+                        <input type="email" class="form-control" id="email">
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Konu:</label>
+                        <input type="text" class="form-control" id="subject">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Mesaj:</label>
+                        <textarea rows="6" class="form-control" id="message" style="resize:none"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gönder</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.717051624913!2d29.03431001174548!3d40.98767622057347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab9007aa21a87%3A0x31f77bc34ad17831!2zU8OcS1LDnCBTQVJBw4dPxJ5MVSBTVEFEWVVNVQ!5e0!3m2!1str!2str!4v1747051117047!5m2!1str!2str"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="container-fluid bg-light text-center p-3 mt-5 border-top">
+        <p class="mb-0">
+            &COPY; 2025 DevBlog. MSCD-8 Sınıfı Tarafından Hazırlanmıştır.
+        </p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script src="js/custom-script.js"></script>
+</body>
+
+</html>
