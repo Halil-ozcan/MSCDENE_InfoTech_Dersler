@@ -1,0 +1,24 @@
+@model ContactInfo // models klasörü içerisinde oluşan model yapılarını c# direk tanıyor.
+
+
+@* @using Project01_MVC_Intro.Controllers
+@model ContactInfo 
+2.kullanım şekli
+*@
+@* @model Project01_MVC_Intro.Controllers.ContactInfo
+    1. kullanım şekli
+*@
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+
+<h1 class="display-4 text-primary">İletişim</h1>
+<div>
+    <p>@Model.Email</p>
+    <p>@Model.City</p>
+    <p>@Model.PhoneNumber</p>
+</div>
+
+

@@ -1,0 +1,42 @@
+﻿@model List<ContactInfo>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <h2>İletişim Bilgileri Listesi</h2>
+    <div class="row">
+        @foreach (ContactInfo contact in Model)
+        {
+            <div class="col-md-4">
+                @await Html.PartialAsync("_ContactInfoPartial", contact) @*2. parametre(contact) bize modeldeki verileri almamızı sağlıyor.*@
+            </div>
+        }
+    </div>
+
+
+
+    @* <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Şehir</th>
+                <th>Telefon Numarası</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ContactInfo contact in Model)
+            {
+                <tr>
+                    <td>@contact.Email</td>
+                    <td>@contact.City</td>
+                    <td>@contact.PhoneNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table> *@
+</div>

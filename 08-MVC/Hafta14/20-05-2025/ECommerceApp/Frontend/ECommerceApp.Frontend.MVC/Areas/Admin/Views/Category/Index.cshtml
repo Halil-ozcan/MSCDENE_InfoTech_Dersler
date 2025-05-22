@@ -1,0 +1,45 @@
+﻿@model List<CategoryDTO>
+<div class="mb-4 d-flex justify-content-between">
+    <h3 class="fw-bold mb-3">Kategoriler</h3>
+    <a asp-area="admin" asp-controller="category" asp-action="create" class="btn btn-primary">Kategori Ekle</a>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="basic-datatables" class="display table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Kategori</th>
+                                <th>Açıklama</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (CategoryDTO category in Model)
+                            {
+                                <tr>
+                                    <td>@category.Id</td>
+                                    <td>
+                                        <img class="rounded-circle" style="width:60px;"
+                                            src="http://localhost:5100/images/@category.ImageUrl">
+                                        <span class="ps-3">@category.Name</span>
+                                    </td>
+                                    <td>@category.Description</td>
+                                    <td class="text-end">
+                                        <a asp-area="admin" asp-controller="category" asp-action="edit"
+                                            asp-route-id="@category.Id" class="btn btn-warning">Düzenle</a>
+                                        <a class="btn btn-info">Çöpe At</a>
+                                        <a class="btn btn-danger">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "About";
+}
+
+
+<h1 class="display-4 text-success">Hakkımızda</h1>
+
+<p>@ViewBag.ApiUrl</p>
+<p>@(ViewBag.ApiUrl)</p>
+<p>@{
+        var apiUrl = ViewBag.ApiUrl.ToString();
+    }
+    <span>@apiUrl</span>
+    
+</p>
+
+<div>
+    <p class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </p>
+</div>
