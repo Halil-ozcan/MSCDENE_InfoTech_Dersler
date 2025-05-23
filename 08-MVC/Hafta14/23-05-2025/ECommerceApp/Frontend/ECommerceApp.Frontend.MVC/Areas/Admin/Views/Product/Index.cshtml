@@ -1,0 +1,85 @@
+@model List<ProductDTO>
+@if (ViewBag.IsDeleted == false)
+{
+    <div class="mb-4 d-flex justify-content-between">
+        <h3 class="fw-bold mb-3">Ürünler</h3>
+        <div>
+            <a asp-area="admin" asp-controller="product" asp-action="create" class="btn btn-primary">Ürün Ekle</a>
+            <a asp-area="admin" asp-controller="product" asp-action="index" asp-route-isDeleted="true"
+                class="btn btn-danger">Geri Dönüşüm Kutusu</a>
+        </div>
+
+    </div>
+}
+else
+{
+    <div class="mb-4 d-flex justify-content-between">
+        <h3 class="fw-bold mb-3">Ürünler Geri Dönüşüm Kutusu</h3>
+        <div>
+            <a asp-area="admin" asp-controller="product" asp-action="index" asp-route-isDeleted="false"
+                class="btn btn-success">Ürün Listesine Dön</a>
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="basic-datatables" class="display table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ürün</th>
+                                <th>Fiyat</th>
+                                <th>Ana Sayfa</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (ProductDTO product in Model)
+                            {
+                                <tr>
+                                    <td>@product.Id</td>
+                                    <td>
+                                        <img class="rounded-circle" style="width:60px;"
+                                            src="http://localhost:5100/images/@product.ImageUrl">
+                                        <span class="ps-3">@product.Name</span>
+                                    </td>
+                                    <td>@product.Price</td>
+                                    <td>@product.IsHome</td>
+                                    <td class="text-end">
+                                        <div class="d-flex justify-content-end gap-2">
+                                            @if (ViewBag.IsDeleted == false)
+                                            {
+                                                <a asp-area="admin" asp-controller="product" asp-action="edit"
+                                                    asp-route-id="@product.Id" class="btn btn-warning">Düzenle</a>
+                                                <a asp-area="admin" asp-controller="product" asp-action="trash"
+                                                    asp-route-id="@product.Id" class="btn btn-danger">Sil</a>
+                                            }
+                                            else
+                                            {
+                                                <form asp-area="admin" asp-controller="product" asp-action="trash"
+                                                    asp-route-deletetype="false">
+                                                    <input type="hidden" name="Id" value="@product.Id">
+                                                    <button type="submit" class="btn btn-info">Geri Al!</button>
+                                                </form>
+                                                <form asp-area="admin" asp-controller="product" asp-action="trash"
+                                                    asp-route-deletetype="true">
+                                                    <input type="hidden" name="Id" value="@product.Id">
+                                                    <button type="submit" class="btn btn-danger">Kalıcı Olarak Sil!</button>
+                                                </form>
+                                            }
+
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

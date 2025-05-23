@@ -1,0 +1,50 @@
+@model List<OrderDTO>
+
+<div class="mb-4 d-flex justify-content-between">
+    <h3 class="fw-bold mb-3">Siparişler</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="basic-datatables" class="display table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Sipariş Tarihi</th>
+                                <th>Müşteri</th>
+                                <th>Durum</th>
+                                <th>Tutar</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (OrderDTO order in Model)
+                            {
+                                <tr>
+                                    <td>@order.Id</td>
+                                    <td>
+                                        <span class="ps-3">@order.OrderDate</span>
+                                    </td>
+                                    <td>@order.AppUser!.FirstName @order.AppUser.LastName</td>
+                                    <td>@order.OrderStatus</td>
+                                    <td>@($"{order.TotalAmount:C2}")</td>
+                                    <td class="text-end">
+                                        <div class="d-flex justify-content-end gap-2">
+                                            <a asp-area="admin" asp-controller="category" asp-action="details"
+                                                asp-route-id="@order.Id" class="btn btn-warning">Detay</a>
+                                            <a asp-area="admin" asp-controller="category" asp-action="trash"
+                                                asp-route-id="@order.Id" class="btn btn-danger">İptal</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

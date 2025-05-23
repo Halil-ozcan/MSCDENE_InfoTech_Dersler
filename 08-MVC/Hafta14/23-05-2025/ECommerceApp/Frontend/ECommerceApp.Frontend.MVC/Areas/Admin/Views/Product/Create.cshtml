@@ -1,0 +1,95 @@
+@model ProductCreateDTO
+<div class="page-header">
+    <h3 class="fw-bold mb-3">Yeni Ürün</h3>
+</div>
+
+
+<form asp-area="admin" asp-controller="product" asp-action="create" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="form-group">
+                    <label asp-for=Name></label>
+                    <input asp-for=Name class="form-control" placeholder="Ürün adını yazınız" />
+                    <span class="text-danger" asp-validation-for=Name></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for=Price></label>
+                    <input asp-for=Price class="form-control" placeholder="Ürün fiyatını yazınız" />
+                    <span class="text-danger" asp-validation-for=Price></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for=IsHome></label>
+                    <input type="checkbox" asp-for=IsHome class="" />
+                </div>
+                <div class="form-group">
+                    <label asp-for=Properties></label>
+                    <textarea asp-for=Properties class="form-control"></textarea>
+                    <span class="text-danger" asp-validation-for=Properties></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="form-group">
+                    <label class="form-label">Kategoriler</label><br>
+                    @foreach (CategoryDTO category in ViewBag.CategoryList)
+                    {
+
+                        <div class="selectgroup selectgroup-pills">
+                            <label class="selectgroup-item">
+                                <input type="checkbox" name="CategoryIds" value="@category.Id" class="selectgroup-input"
+                                    @(Model.CategoryIds.Any(x=>x==category.Id) ? "checked" : "") />
+                                <span class="selectgroup-button">@category.Name</span>
+                            </label>
+                        </div>
+                    }
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image"></label>
+                    <input asp-for="Image" class="form-control-file" />
+                    <span class="text-danger" asp-validation-for=Image></span>
+                    <div>
+                        <img id="image-preview" src="/admin/img/nopicture.png"
+                            style="max-height: 150px; object-fit:contain;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Kaydet</button>
+    </div>
+</form>
+
+
+
+@section Styles {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/summernote-bs5.min.css">
+
+}
+
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/summernote-bs5.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#Properties').summernote({
+                height: "200"
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("Image").addEventListener('change', function (event) {
+            let image = event.target.files[0];
+            if (image) {
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById("image-preview").src = e.target.result;
+                }
+                reader.readAsDataURL(image);
+                console.log(image);
+            }
+        })
+    </script>
+}
