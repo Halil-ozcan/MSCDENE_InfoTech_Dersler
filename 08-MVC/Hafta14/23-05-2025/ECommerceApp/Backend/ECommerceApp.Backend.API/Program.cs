@@ -34,6 +34,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 // Repository'lerimizi ekliyoruz.
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
