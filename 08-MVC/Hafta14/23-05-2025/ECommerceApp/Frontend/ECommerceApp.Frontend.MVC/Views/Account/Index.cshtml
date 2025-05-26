@@ -1,0 +1,90 @@
+@model AppUserDTO
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Cart Start -->
+<div class="container-fluid">
+    <form asp-controller="account" asp-action="edit" method="post">
+        <div class="row px-xl-5">
+            <div class="col-lg-6 mb-5">
+                <h5 class="section-title position-relative mb-3"><span class="bg-secondary pr-3">Kullanıcı
+                        Bilgileri</span></h5>
+                <div class="bg-light p-30 mb-5">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Ad</label>
+                            <input asp-for=FirstName class="form-control" type="text">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Soyad</label>
+                            <input asp-for=LastName class="form-control" type="text">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Adres</label>
+                            <input asp-for=Address class="form-control" type="text">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Şehir</label>
+                            <input asp-for=City class="form-control" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-success" type="submit">Değişiklikleri Kaydet</button>
+            </div>
+            <div class=" col-lg-6">
+                <div class="accordion" id="accordionOrders">
+                    @foreach (OrderDTO order in Model.Orders)
+                    {
+                        <div class="card">
+                            <div class="card-header" id="heading_@order.Id">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left text-dark" type="button"
+                                        data-toggle="collapse" data-target="#collapse_@order.Id" aria-expanded="false"
+                                        aria-controls="collapse_@order.Id">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Tarih: @order.OrderDate</span>
+                                            <span>Sipariş Tutarı: @order.TotalAmount</span>
+                                        </div>
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapse_@order.Id" class="collapse" aria-labelledby="heading_@order.Id"
+                                data-parent="#accordionOrders">
+                                <div class="card-body">
+                                    <table class="table table-bordered table-sm table-success">
+                                        <thead>
+                                            <tr>
+                                                <th>Ürün</th>
+                                                <th>Adet</th>
+                                                <th>Fiyat</th>
+                                                <th>Tutar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (OrderItemDTO orderItem in order.OrderItems)
+                                            {
+                                                <tr>
+                                                    <td>@orderItem.ProductName</td>
+                                                    <td>@orderItem.Quantity</td>
+                                                    <td>@orderItem.UnitPrice</td>
+                                                    <td>@orderItem.ItemAmount</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+<!-- Cart End -->

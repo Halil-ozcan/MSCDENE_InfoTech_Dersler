@@ -21,11 +21,19 @@
                         <tr>
                             <td>@orderItem.ProductName</td>
                             <td>@orderItem.Quantity</td>
-                            <td>@orderItem.UnitPrice</td>
-                            <td>@orderItem.ItemAmount</td>
+                            <td>@($"{orderItem.UnitPrice:C2}")</td>
+                            <td>@($"{orderItem.ItemAmount:C2}")</td>
                         </tr>
                     }
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="text-success fw-bold">Toplam:</td>
+                        <td class="text-danger">@($"{Model.TotalAmount:C2}")</td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
         <a asp-area="admin" asp-controller="order" asp-action="index" class="btn btn-success">Sipariş Listesine Dön</a>

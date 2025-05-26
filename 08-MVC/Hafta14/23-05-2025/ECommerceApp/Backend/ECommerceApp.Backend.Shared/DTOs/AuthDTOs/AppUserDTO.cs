@@ -1,4 +1,5 @@
 using System;
+using ECommerceApp.Backend.Shared.DTOs.OrderDTOs;
 using ECommerceApp.Backend.Shared.Enums;
 
 namespace ECommerceApp.Backend.Shared.DTOs.AuthDTOs;
@@ -15,4 +16,5 @@ public class AppUserDTO
     public string? UserName { get; set; }
     public string? Email { get; set; }
     public bool EmailConfirmed { get; set; }
+    public ICollection<OrderDTO> Orders { get; set; } = [];
 }

@@ -3,12 +3,13 @@
 <div class="mb-4 d-flex justify-content-between">
     <h3 class="fw-bold mb-3">Siparişler</h3>
     <div>
-        <a class="btn btn-primary" asp-area="admin" asp-controller="order" asp-action="index"
-            asp-route-orderstatus="null">Tümü</a>
+        <a class="btn btn-primary" asp-area="admin" asp-controller="order" asp-action="ordersbydate"
+            asp-route-orderstatus="null" asp-route-startdate="@DateTime.Now" asp-route-enddate="@DateTime.Now">Tümü</a>
         @foreach (SelectListItem orderStatus in ViewBag.OrderStatusList)
         {
             <a class="btn @(orderStatus.Selected ? "btn-success" : "btn-primary")" asp-area="admin" asp-controller="order"
-                asp-action="index" asp-route-orderstatus="@orderStatus.Value">@orderStatus.Text</a>
+                asp-action="ordersbydate" asp-route-orderstatus="@orderStatus.Value" asp-route-startdate="@DateTime.Now"
+                asp-route-enddate="@DateTime.Now">@orderStatus.Text</a>
         }
     </div>
 </div>

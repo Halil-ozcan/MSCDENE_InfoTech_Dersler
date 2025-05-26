@@ -1,9 +1,10 @@
-﻿﻿<!-- Sidebar -->
+﻿﻿
+﻿<!-- Sidebar -->
 <div class="sidebar" data-background-color="dark">
     <div class="sidebar-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo">
+            <a href="/admin" class="logo">
                 <span class="text-white">ECommerce Admin</span>
             </a>
             <div class="nav-toggle">
@@ -18,6 +19,12 @@
                 <i class="gg-more-vertical-alt"></i>
             </button>
         </div>
+        <div class="logo-header">
+            <a href="/" target="_blank" class="logo">
+                <span class="text-warning">ECommerce App</span>
+            </a>
+        </div>
+
         <!-- End Logo Header -->
     </div>
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
@@ -93,15 +100,26 @@
                     <div class="collapse" id="orders">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="components/avatars.html">
+                                <a asp-area="admin" asp-controller="order" asp-action="index"
+                                    asp-route-orderstatus="null">
                                     <span class="sub-item">Tüm Siparişler</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-area="admin" asp-controller="order" asp-action="ordersbydate"
+                                    asp-route-startdate="@DateTime.Now.Date"
+                                    asp-route-enddate="@DateTime.Now.Date.AddDays(1)    ">
+                                    <span class="sub-item">Bugünkü Siparişler</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
+
+
+
                 </li>
                 <li class="nav-item">
-                    <a href="../../documentation/index.html">
+                    <a asp-area="" asp-controller="auth" asp-action="logout">
                         <i class="fas fa-file"></i>
                         <p>Çıkış</p>
                     </a>
